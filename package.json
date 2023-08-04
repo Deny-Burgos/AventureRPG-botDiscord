@@ -1,0 +1,26 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "deploy": "node deployCommands.js",
+    "createTables": "node ./db/createTables.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ascii-table3": "^0.8.2",
+    "axios": "^1.4.0",
+    "better-sqlite3": "^8.4.0",
+    "color-thief-node": "^1.0.4",
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "nodemon": "^3.0.1"
+  }
+}
