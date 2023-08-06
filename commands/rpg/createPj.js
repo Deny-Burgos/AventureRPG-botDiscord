@@ -1,9 +1,8 @@
 const { SlashCommandBuilder, ActionRowBuilder } = require('discord.js');
 const db = require('../../db');
 
-const { femenino, masculino, exampleEmbed } = require('./modules/seleccionarGenero.js');
-const { rol } = require('./modules/seleccionRol.js');
-const { mago } = require('./modules/embeds');
+const { femenino, masculino, embedGenero } = require('./modules/seleccionarGenero.js');
+const { rol, embedGlobal2, imagenResource } = require('./modules/seleccionRol.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -41,7 +40,7 @@ module.exports = {
       const generoEmbed = await interaction.reply({
         content: `Personaje creado **${namePj}** para <@${id}>`,
         components: [row],
-        embeds: [exampleEmbed],
+        embeds: [embedGenero],
       });
       const selectGenero = await generoEmbed.awaitMessageComponent({ filter: collectorFilter, time: 60_000 });
 
@@ -51,22 +50,35 @@ module.exports = {
       WHERE discord_id = ?
       `).run(selectGenero.customId, id);
       newGenero;
-
-
+      const generoValue = selectGenero.customId;
+      console.log(generoValue);
       const selector = await selectGenero.update(rol);
       const selectRol = await selector.awaitMessageComponent({ filter: collectorFilter, time: 60_000 });
-      // console.log(selectRol);
-
+      if (selectRol.isButton()) {
+        return await selectRol.update('no se esperaba un boton');
+      }
+      let embedGlobal;
+      const rolValue = selectRol.values[0];
+      if (rolValue === 'guerrero') {
+        embedGlobal = embedGlobal2(namePj, generoValue, rolValue, imagenResource.guerrero);
+      }
+      if (rolValue === 'mago') {
+        embedGlobal = embedGlobal2(namePj, generoValue, rolValue, imagenResource.mago);
+      }
+      if (rolValue === 'arquero') {
+        embedGlobal = embedGlobal2(namePj, generoValue, rolValue, imagenResource.arquero);
+      }
+      console.log(rolValue);
       const newRol = db.prepare(`
       UPDATE personajesRPG  
       SET rol = ?
       WHERE discord_id = ?
-      `).run(selectRol.values[0], id);
+      `).run(rolValue, id);
       newRol;
 
       await selectRol.update({
-        content: 'Personaje Creado',
-        embeds: [mago],
+        content: `Personaje Creado <@${id}>`,
+        embeds: [embedGlobal],
         components: [],
       });
     } catch (error) {

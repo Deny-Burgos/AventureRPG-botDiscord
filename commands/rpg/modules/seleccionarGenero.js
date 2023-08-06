@@ -10,11 +10,11 @@ const femenino = new ButtonBuilder()
   .setLabel('Femenino')
   .setStyle(ButtonStyle.Primary);
 
-const exampleEmbed = new EmbedBuilder()
+const embedGenero = new EmbedBuilder()
   .setColor(0x0099FF)
   .setImage('https://i.pinimg.com/564x/7f/42/ce/7f42cea9ee3861b074093636104f18c1.jpg')
   .setDescription('Selecciona tu genero');
 
 module.exports = {
-  femenino, masculino, exampleEmbed,
+  femenino, masculino, embedGenero,
 };

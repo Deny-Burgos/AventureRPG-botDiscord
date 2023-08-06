@@ -1,19 +1,19 @@
-npm run dev <= para correr scripts y el bot de discord
-npm i para instalar las dependencias al cambio de pc y la carpeta
-<!-- ------------------------------- -->
-eslint  dependencia para usarse global
-extension en vs eslint
+npm run dev para hacer funcionar el bot
+npm run createTables para crear la base de datos de los personajes
 
-cambiar en settings el tab size a 2
+##comandos del bots
+###/create-Pj: 
+este comando es usado para iniciar tu aventura con el bot, aqui podras crear tu personaje, seleccionar estas opciones para mas detalles:
+**nombre:** "nombre del personaje"
+![Nombre del personaje](/img/name.png)
+**seleccionar genero:** Masculino o Femenino, mediante los botones
+![Seleccionar genero](/img/createpj%20genero.png)
+**modo de combate:** Guerrero/Mago o Arquero, mediante el select
+![Seleccionar Rol](/img/selectRol.png)
 
-dependencia tipo liveserver => npm install -D nodemon
-dependencia para el color jimp
+###/combat: 
+podras mencionar a un usuario del servidor para hacer un duelo pvp
+![combate](/img/combat.png)
 
-
-pasos para ocultar los tokens
-instalar npm install dotenv para ocultar el TOKEN en este caso de discord
-crear archivo .env 
-
-
-<!-- ----------------------------- -->
-npm createTables para crear tablas de user o notes
+###/healing: 
+podras curar tus heridas despues del duelo

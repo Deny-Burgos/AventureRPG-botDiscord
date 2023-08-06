@@ -2,7 +2,7 @@ const { SlashCommandBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder, Compo
 const db = require('../../db');
 function barraFn(vidaRes) {
   const vida = 100;
-  const largoBarra = 15;
+  const largoBarra = 20;
   const diff = Math.floor((vidaRes / vida) * largoBarra);
   diff;
   let barra = '';
@@ -53,7 +53,7 @@ module.exports = {
         .setCustomId('ataque')
         .setLabel('Ataque')
         .setStyle(ButtonStyle.Primary)
-        .setEmoji('<a:LER_PandaFight:891913489118007326>');
+        .setEmoji('<a:PVP82:1137818755519496336>');
       const row = new ActionRowBuilder().addComponents(damageBtn);
       const response = await interaction.reply({
         content: `combate contra: ${nameVersus}

@@ -20,7 +20,7 @@ module.exports = {
     `).run(healing.vida, id);
     // console.log(healing);
     if (healing.vida === 100) {
-      return await interaction.reply('completo');
+      return await interaction.reply('vida completa');
     }
     await interaction.reply(`Ha curado a <@${id}>`);
   },
